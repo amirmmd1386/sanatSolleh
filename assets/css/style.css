@@ -5,6 +5,8 @@
 *{
     margin: 0;
     padding: 0;
+    list-style: none;
+    text-decoration: none;
 }
 body {
     font-family: "yekan";
@@ -17,6 +19,27 @@ body {
     --second: #f6a21d;
     --textsecond: #e78f00;
     --bgColor:#fafafa;
+}
+.bgSecond{
+    background-color: var(--second);
+}
+.icon{
+    width: 70px;
+    height: 70px;
+    font-size: 2rem;
+    font-weight: bolder;
+    text-align: center;
+}
+.rounded-10{
+    border-radius: 20px;
+}
+.centerThing{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.bgcolor{
+    background-color: var(--bgColor);
 }
 .text-second{
     color: var(--textsecond);
@@ -35,7 +58,13 @@ body {
     transition: background-color 0.3s;
     text-decoration: none;
 }
-
+.avatar{
+    width: 100px;
+    height: 100px;
+}
+.object-fit-cover{
+    object-fit: cover;
+}
 @media screen and (max-width:500px) {
     .Sanatbutton {
         font-size: 16px;
