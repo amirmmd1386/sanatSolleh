@@ -82,10 +82,9 @@
                     <form class="col-12 col-lg-10 m-auto">
                         <div class="form-outline " data-mdb-input-init>
                             <i class="bi bi-phone trailing"></i>
-                            <input type="text" id="phoneNumber" class="form-control form-icon-trailing"
-                                 required/>
+                            <input type="text" id="phoneNumber" class="form-control form-icon-trailing" required />
                             <label class="form-label" for="form1">شماره همراه خود را وارد کنید</label>
-                            <div class="valid-feedback">شماره تماس  درست است</div>
+                            <div class="valid-feedback">شماره تماس درست است</div>
                             <div class="invalid-feedback">لطفا شماره تماس خود را درست وارد کنید</div>
                         </div>
                         <div class="text-center">
@@ -201,18 +200,26 @@
         src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.3.2/mdb.umd.min.js"></script>
     <script>
         const phoneNumberInput = document.getElementById('phoneNumber');
-
+        const formEl = document.querySelector('form')
+        let login = false
+        formEl.addEventListener('submit',(e)=>{
+           e.preventDefault()
+           if(login){
+            formEl.submit()
+           }
+        })
         phoneNumberInput.addEventListener('keyup', (e) => {
-          const phoneNumber = e.target.value;
-          const regex = /^09\d{9}$/; // Iranian mobile phone number regex
-          if (!regex.test(phoneNumber)) {
-            // Show error message or highlight the input field
-            phoneNumberInput.classList.remove("is-valid")
-            phoneNumberInput.classList.add("is-invalid")
-          } else {
-            phoneNumberInput.classList.remove("is-invalid")
-            phoneNumberInput.classList.add("is-valid")
-          }
+            const phoneNumber = e.target.value;
+            const regex = /^09\d{9}$/; // Iranian mobile phone number regex
+            if (!regex.test(phoneNumber)) {
+                // Show error message or highlight the input field
+                phoneNumberInput.classList.remove("is-valid")
+                phoneNumberInput.classList.add("is-invalid")
+            } else {
+                phoneNumberInput.classList.remove("is-invalid")
+                phoneNumberInput.classList.add("is-valid")
+                login = true
+            }
         });
     </script>
 </body>
