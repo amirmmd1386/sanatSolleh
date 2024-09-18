@@ -99,6 +99,9 @@ body {
     transition: background-color 0.3s;
     text-decoration: none;
 }
+.bi-3x{
+    font-size: xx-large;
+}
 .avatar{
     width: 100px;
     height: 100px;
