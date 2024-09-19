@@ -115,6 +115,9 @@ body {
 #map{
     height: 400px;
 }
+#maps{
+    height: 400px;
+}
 @media screen and (min-width:1400px)
  {
     .container-xxl{
@@ -140,7 +143,7 @@ body {
     .btn-icon{
         width: 100%;
     }
-    #map{
+    #map ,#maps{
         height: 250px;
     }
 }
@@ -149,6 +152,11 @@ option:checked {
     color: white; /* تغییر رنگ پس‌زمینه هنگام هاور */
 }
 
+.box-shadow{
+    box-shadow: 7px 5px 14px -2px rgba(59,59,59,0.65);
+-webkit-box-shadow: 7px 5px 14px -2px rgba(59,59,59,0.65);
+-moz-box-shadow: 7px 5px 14px -2px rgba(59,59,59,0.65);
+}
 
 #static_bg{
     background-image: url(../image/bg/forAll.png);
