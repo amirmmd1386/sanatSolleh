@@ -112,6 +112,9 @@ body {
 .border-second{
     border-color: var(--second) !important;
 }
+#map{
+    height: 400px;
+}
 @media screen and (min-width:1400px)
  {
     .container-xxl{
@@ -136,6 +139,9 @@ body {
     }
     .btn-icon{
         width: 100%;
+    }
+    #map{
+        height: 250px;
     }
 }
 option:checked {
