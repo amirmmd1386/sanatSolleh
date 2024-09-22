@@ -20,29 +20,121 @@
             object-fit: cover;
             object-position: center;
         }
+        .dropdown-menu {
+            max-height: 200px;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: 400px;
+            max-width: 350px;
+        }
+        
+        .dropdown-menu h4 {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+        .dropdown-menu ul {
+            list-style: none;
+            padding: 0;
+        }
+        .dropdown-menu li {
+            margin: 5px 0;
+        }
+        .dropdown-menu input[type="checkbox"] {
+            margin-right: 10px;
+        }
     </style>
 </head>
 
 <body dir="rtl">
     <div class="container-xxl mt-5">
-        <div class="row mb-3">
-            <div class="col">
-                <select id="categoryFilter" class="form-select">
-                    <option value="all">همه دسته‌ها</option>
-                    <option value="electronics">الکترونیک</option>
-                    <option value="clothing">پوشاک</option>
-                    <option value="books">کتاب‌ها</option>
-                </select>
-            </div>
-            <div class="col">
-                <select id="priceFilter" class="form-select">
-                    <option value="all">همه قیمت‌ها</option>
-                    <option value="low">کمتر از ۵۰ هزار تومان</option>
-                    <option value="medium">۵۰ تا ۱۰۰ هزار تومان</option>
-                    <option value="high">بیشتر از ۱۰۰ هزار تومان</option>
-                </select>
-            </div>
+        <div class="d-flex mb-3">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                  <span class="input-group-text" id="basic-addon2">جستجو</span>
+                </div>
+              </div>
+                <div class="form-group ">
+                    <div class="dropdown">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="price-range" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            قیمت
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu border border-2 border-second rounded-10" aria-labelledby="price-range">
+                            <div class="d-flex justify-content-around w-100" aria-labelledby="price-range">
+                                <li>
+                                    <h4>حداقل قیمت (تومان)</h4>
+                                    <ul>
+                                        <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="min-100m" value="100m"><label for="min-100m">100 میلیون</label></li>
+                                        <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="min-500m" value="500m"><label for="min-500m">500 میلیون</label></li>
+                                        <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="min-750m" value="750m"><label for="min-750m">750 میلیون</label></li>
+                                        <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="min-100m" value="100m"><label for="min-100m">100 میلیون</label></li>
+                                        <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="min-500m" value="500m"><label for="min-500m">500 میلیون</label></li>
+                                        <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="min-750m" value="750m"><label for="min-750m">750 میلیون</label></li>
+                                        <!-- Add more options here -->
+                                    </ul>
+                                </li>
+                                <li>
+                                    <h4>حداکثر قیمت (تومان)</h4>
+                                    <ul>
+                                        <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="max-2b" value="2b"><label for="max-2b">2 میلیارد</label></li>
+                                        <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="max-3b" value="3b"><label for="max-3b">3 میلیارد</label></li>
+                                        <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="max-5b" value="5b"><label for="max-5b">5 میلیارد</label></li>
+                                        <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="max-2b" value="2b"><label for="max-2b">2 میلیارد</label></li>
+                                        <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="max-3b" value="3b"><label for="max-3b">3 میلیارد</label></li>
+                                        <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="max-5b" value="5b"><label for="max-5b">5 میلیارد</label></li>
+                                        <!-- Add more options here -->
+                                    </ul>
+                                </li>
+                            </div>
+                            <div class="d-flex justify-content-between w-100 align-items-center">
+                                <li><a href="javascript:;" onclick="clearSelection()">پاک کردن انتخاب</a></li>
+                                <li><a href="javascript:;" class="closebox-link">بستن</a></li>
+                            </div>
+                        </ul>
+                    </div>
+                    <label id="price-error" class="text-danger" style="display:none">حداقل قیمت از حداکثر آن بیشتر است</label>
+                </div>
+                <div class="form-group">
+                    <!-- <label for="price-range">متراژ</label> -->
+                    <div class="dropdown ">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="price-range" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            متراژ
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu  border border-2 border-second rounded-10" aria-labelledby="price-range">
+                            <div class="d-flex justify-content-around w-100" >
+                                <li>
+                                    <h4>حداقل متراژ (متر مربع)</h4>
+                                    <ul>
+                                        <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="min-50m" value="50m"><label for="min-50m">50 متر</label></li>
+                                        <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="min-100m" value="100m"><label for="min-100m">100 متر</label></li>
+                                        <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="min-150m" value="150m"><label for="min-150m">150 متر</label></li>
+                                        <!-- Add more options here -->
+                                    </ul>
+                                </li>
+                                <li>
+                                    <h4>حداکثر متراژ (متر مربع)</h4>
+                                    <ul>
+                                        <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="max-200m" value="200m"><label for="max-200m">200 متر</label></li>
+                                        <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="max-300m" value="300m"><label for="max-300m">300 متر</label></li>
+                                        <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="max-400m" value="400m"><label for="max-400m">400 متر</label></li>
+                                        <!-- Add more options here -->
+                                    </ul>
+                                </li>
+                            </div>
+                            <div class="d-flex justify-content-between w-100 align-items-center">
+                                <li><a class="text-dark" href="javascript:;" onclick="clearSelection()">پاک کردن انتخاب</a></li>
+                                <li><a href="javascript:;" class="closebox-link text-dark">بستن</a></li>
+                            </div>
+                        </ul>
+                    </div>
+                    <label id="price-error" class="text-danger" style="display:none">حداقل متراژ از حداکثر آن بیشتر است</label>
+                </div>
+            
         </div>
+
         <div class="row row-cols-1 row-cols-lg-3">
             <div class="col ">
                 <div class="card w-100 rounded-10 overflow-hidden hvr-shadow">
@@ -84,8 +176,9 @@
                             18سال
                         </div>
                     </div>
-                    <div class="card-footer d-flex align-items-center justify-content-center mx-3 pt-3 pb-0 text-nowrap">
-                        <!--[if BLOCK]><![endif]--> 
+                    <div
+                        class="card-footer d-flex align-items-center justify-content-center mx-3 pt-3 pb-0 text-nowrap">
+                        <!--[if BLOCK]><![endif]-->
                         <span class="d-table badge bg-dark fw-light me-2">آب</span>
                         <span class="d-table badge bg-dark fw-light me-2">برق</span>
                         <span class="d-table badge bg-dark fw-light me-2">گاز</span>
@@ -138,8 +231,9 @@
                             18سال
                         </div>
                     </div>
-                    <div class="card-footer d-flex align-items-center justify-content-center mx-3 pt-3 pb-0 text-nowrap">
-                        <!--[if BLOCK]><![endif]--> 
+                    <div
+                        class="card-footer d-flex align-items-center justify-content-center mx-3 pt-3 pb-0 text-nowrap">
+                        <!--[if BLOCK]><![endif]-->
                         <span class="d-table badge bg-dark fw-light me-2">آب</span>
                         <span class="d-table badge bg-dark fw-light me-2">برق</span>
                         <span class="d-table badge bg-dark fw-light me-2">گاز</span>
@@ -192,8 +286,9 @@
                             18سال
                         </div>
                     </div>
-                    <div class="card-footer d-flex align-items-center justify-content-center mx-3 pt-3 pb-0 text-nowrap">
-                        <!--[if BLOCK]><![endif]--> 
+                    <div
+                        class="card-footer d-flex align-items-center justify-content-center mx-3 pt-3 pb-0 text-nowrap">
+                        <!--[if BLOCK]><![endif]-->
                         <span class="d-table badge bg-dark fw-light me-2">آب</span>
                         <span class="d-table badge bg-dark fw-light me-2">برق</span>
                         <span class="d-table badge bg-dark fw-light me-2">گاز</span>
@@ -246,8 +341,9 @@
                             18سال
                         </div>
                     </div>
-                    <div class="card-footer d-flex align-items-center justify-content-center mx-3 pt-3 pb-0 text-nowrap">
-                        <!--[if BLOCK]><![endif]--> 
+                    <div
+                        class="card-footer d-flex align-items-center justify-content-center mx-3 pt-3 pb-0 text-nowrap">
+                        <!--[if BLOCK]><![endif]-->
                         <span class="d-table badge bg-dark fw-light me-2">آب</span>
                         <span class="d-table badge bg-dark fw-light me-2">برق</span>
                         <span class="d-table badge bg-dark fw-light me-2">گاز</span>
@@ -300,8 +396,9 @@
                             18سال
                         </div>
                     </div>
-                    <div class="card-footer d-flex align-items-center justify-content-center mx-3 pt-3 pb-0 text-nowrap">
-                        <!--[if BLOCK]><![endif]--> 
+                    <div
+                        class="card-footer d-flex align-items-center justify-content-center mx-3 pt-3 pb-0 text-nowrap">
+                        <!--[if BLOCK]><![endif]-->
                         <span class="d-table badge bg-dark fw-light me-2">آب</span>
                         <span class="d-table badge bg-dark fw-light me-2">برق</span>
                         <span class="d-table badge bg-dark fw-light me-2">گاز</span>
@@ -354,8 +451,9 @@
                             18سال
                         </div>
                     </div>
-                    <div class="card-footer d-flex align-items-center justify-content-center mx-3 pt-3 pb-0 text-nowrap">
-                        <!--[if BLOCK]><![endif]--> 
+                    <div
+                        class="card-footer d-flex align-items-center justify-content-center mx-3 pt-3 pb-0 text-nowrap">
+                        <!--[if BLOCK]><![endif]-->
                         <span class="d-table badge bg-dark fw-light me-2">آب</span>
                         <span class="d-table badge bg-dark fw-light me-2">برق</span>
                         <span class="d-table badge bg-dark fw-light me-2">گاز</span>
@@ -408,8 +506,9 @@
                             18سال
                         </div>
                     </div>
-                    <div class="card-footer d-flex align-items-center justify-content-center mx-3 pt-3 pb-0 text-nowrap">
-                        <!--[if BLOCK]><![endif]--> 
+                    <div
+                        class="card-footer d-flex align-items-center justify-content-center mx-3 pt-3 pb-0 text-nowrap">
+                        <!--[if BLOCK]><![endif]-->
                         <span class="d-table badge bg-dark fw-light me-2">آب</span>
                         <span class="d-table badge bg-dark fw-light me-2">برق</span>
                         <span class="d-table badge bg-dark fw-light me-2">گاز</span>
@@ -462,8 +561,9 @@
                             18سال
                         </div>
                     </div>
-                    <div class="card-footer d-flex align-items-center justify-content-center mx-3 pt-3 pb-0 text-nowrap">
-                        <!--[if BLOCK]><![endif]--> 
+                    <div
+                        class="card-footer d-flex align-items-center justify-content-center mx-3 pt-3 pb-0 text-nowrap">
+                        <!--[if BLOCK]><![endif]-->
                         <span class="d-table badge bg-dark fw-light me-2">آب</span>
                         <span class="d-table badge bg-dark fw-light me-2">برق</span>
                         <span class="d-table badge bg-dark fw-light me-2">گاز</span>
@@ -516,8 +616,9 @@
                             18سال
                         </div>
                     </div>
-                    <div class="card-footer d-flex align-items-center justify-content-center mx-3 pt-3 pb-0 text-nowrap">
-                        <!--[if BLOCK]><![endif]--> 
+                    <div
+                        class="card-footer d-flex align-items-center justify-content-center mx-3 pt-3 pb-0 text-nowrap">
+                        <!--[if BLOCK]><![endif]-->
                         <span class="d-table badge bg-dark fw-light me-2">آب</span>
                         <span class="d-table badge bg-dark fw-light me-2">برق</span>
                         <span class="d-table badge bg-dark fw-light me-2">گاز</span>
@@ -530,36 +631,60 @@
                     </div>
                 </div>
             </div>
-          
+
         </div>
     </div>
-
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
     <script>
-        document.getElementById('categoryFilter').addEventListener('change', filterProducts);
-        document.getElementById('priceFilter').addEventListener('change', filterProducts);
+        // document.getElementById('categoryFilter').addEventListener('change', filterProducts);
+        // document.getElementById('priceFilter').addEventListener('change', filterProducts);
 
-        function filterProducts() {
-            const category = document.getElementById('categoryFilter').value;
-            const price = document.getElementById('priceFilter').value;
-            const products = document.querySelectorAll('.product-card');
+        // function filterProducts() {
+        //     const category = document.getElementById('categoryFilter').value;
+        //     const price = document.getElementById('priceFilter').value;
+        //     const products = document.querySelectorAll('.product-card');
 
-            products.forEach(product => {
-                const productCategory = product.getAttribute('data-category');
-                const productPrice = product.getAttribute('data-price');
+        //     products.forEach(product => {
+        //         const productCategory = product.getAttribute('data-category');
+        //         const productPrice = product.getAttribute('data-price');
 
-                let categoryMatch = category === 'all' || category === productCategory;
-                let priceMatch = price === 'all' || price === productPrice;
+        //         let categoryMatch = category === 'all' || category === productCategory;
+        //         let priceMatch = price === 'all' || price === productPrice;
 
-                if (categoryMatch && priceMatch) {
-                    product.style.display = 'block';
-                } else {
-                    product.style.display = 'none';
+        //         if (categoryMatch && priceMatch) {
+        //             product.style.display = 'block';
+        //         } else {
+        //             product.style.display = 'none';
+        //         }
+        //     });
+        // }
+
+        // // Initial display
+        // filterProducts();
+        document.querySelectorAll('.dropdown-menu input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const group = this.closest('ul');
+                if (this.checked) {
+                    group.querySelectorAll('input[type="checkbox"]').forEach(box => {
+                        if (box !== this) box.checked = false;
+                    });
                 }
             });
-        }
+        });
 
-        // Initial display
-        filterProducts();
+        function clearSelection() {
+            document.querySelectorAll('.dropdown-menu input[type="checkbox"]').forEach(box => {
+                box.checked = false;
+            });
+        }
     </script>
 </body>
 
