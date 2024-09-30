@@ -20,27 +20,31 @@
             object-fit: cover;
             object-position: center;
         }
-        .dropdown-menu {
-            max-height: 200px;
+
+        .dropdown-menuList {
+            /* max-height: 200px; */
             overflow-y: auto;
             border: 1px solid #ccc;
             padding: 10px;
             width: 400px;
             max-width: 350px;
         }
-        
-        .dropdown-menu h4 {
+
+        .dropdown-menuList h4 {
             font-size: 16px;
             margin: 10px 0;
         }
-        .dropdown-menu ul {
+
+        .dropdown-menuList ul {
             list-style: none;
             padding: 0;
         }
-        .dropdown-menu li {
+
+        .dropdown-menuList li {
             margin: 5px 0;
         }
-        .dropdown-menu input[type="checkbox"] {
+
+        .dropdown-menuList input[type="checkbox"] {
             margin-right: 10px;
         }
     </style>
@@ -50,89 +54,112 @@
     <div class="container-xxl mt-5">
         <div class="d-flex mb-3">
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                <input type="text" class="form-control" placeholder="Recipient's username"
+                    aria-label="Recipient's username" aria-describedby="basic-addon2">
                 <div class="input-group-append">
-                  <span class="input-group-text" id="basic-addon2">جستجو</span>
+                    <span class="input-group-text" id="basic-addon2">جستجو</span>
                 </div>
-              </div>
-                <div class="form-group ">
-                    <div class="dropdown">
-                        <button class="btn btn-default dropdown-toggle" type="button" id="price-range" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                            قیمت
-                            <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu border border-2 border-second rounded-10" aria-labelledby="price-range">
-                            <div class="d-flex justify-content-around w-100" aria-labelledby="price-range">
-                                <li>
-                                    <h4>حداقل قیمت (تومان)</h4>
-                                    <ul>
-                                        <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="min-100m" value="100m"><label for="min-100m">100 میلیون</label></li>
-                                        <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="min-500m" value="500m"><label for="min-500m">500 میلیون</label></li>
-                                        <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="min-750m" value="750m"><label for="min-750m">750 میلیون</label></li>
-                                        <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="min-100m" value="100m"><label for="min-100m">100 میلیون</label></li>
-                                        <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="min-500m" value="500m"><label for="min-500m">500 میلیون</label></li>
-                                        <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="min-750m" value="750m"><label for="min-750m">750 میلیون</label></li>
-                                        <!-- Add more options here -->
-                                    </ul>
-                                </li>
-                                <li>
-                                    <h4>حداکثر قیمت (تومان)</h4>
-                                    <ul>
-                                        <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="max-2b" value="2b"><label for="max-2b">2 میلیارد</label></li>
-                                        <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="max-3b" value="3b"><label for="max-3b">3 میلیارد</label></li>
-                                        <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="max-5b" value="5b"><label for="max-5b">5 میلیارد</label></li>
-                                        <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="max-2b" value="2b"><label for="max-2b">2 میلیارد</label></li>
-                                        <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="max-3b" value="3b"><label for="max-3b">3 میلیارد</label></li>
-                                        <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="max-5b" value="5b"><label for="max-5b">5 میلیارد</label></li>
-                                        <!-- Add more options here -->
-                                    </ul>
-                                </li>
-                            </div>
-                            <div class="d-flex justify-content-between w-100 align-items-center">
-                                <li><a href="javascript:;" onclick="clearSelection()">پاک کردن انتخاب</a></li>
-                                <li><a href="javascript:;" class="closebox-link">بستن</a></li>
-                            </div>
-                        </ul>
-                    </div>
-                    <label id="price-error" class="text-danger" style="display:none">حداقل قیمت از حداکثر آن بیشتر است</label>
+            </div>
+            <div class="form-group ">
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="modal" data-target="#moneyModal">
+                        قیمت
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu border border-2 border-second rounded-10" aria-labelledby="price-range">
+                        <div class="d-flex justify-content-around w-100" aria-labelledby="price-range">
+                            <li>
+                                <h4>حداقل قیمت (تومان)</h4>
+                                <ul>
+                                    <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="min-100m"
+                                            value="100m"><label for="min-100m">100 میلیون</label></li>
+                                    <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="min-500m"
+                                            value="500m"><label for="min-500m">500 میلیون</label></li>
+                                    <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="min-750m"
+                                            value="750m"><label for="min-750m">750 میلیون</label></li>
+                                    <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="min-100m"
+                                            value="100m"><label for="min-100m">100 میلیون</label></li>
+                                    <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="min-500m"
+                                            value="500m"><label for="min-500m">500 میلیون</label></li>
+                                    <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="min-750m"
+                                            value="750m"><label for="min-750m">750 میلیون</label></li>
+                                    <!-- Add more options here -->
+                                </ul>
+                            </li>
+                            <li>
+                                <h4>حداکثر قیمت (تومان)</h4>
+                                <ul>
+                                    <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="max-2b"
+                                            value="2b"><label for="max-2b">2 میلیارد</label></li>
+                                    <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="max-3b"
+                                            value="3b"><label for="max-3b">3 میلیارد</label></li>
+                                    <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="max-5b"
+                                            value="5b"><label for="max-5b">5 میلیارد</label></li>
+                                    <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="max-2b"
+                                            value="2b"><label for="max-2b">2 میلیارد</label></li>
+                                    <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="max-3b"
+                                            value="3b"><label for="max-3b">3 میلیارد</label></li>
+                                    <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="max-5b"
+                                            value="5b"><label for="max-5b">5 میلیارد</label></li>
+                                    <!-- Add more options here -->
+                                </ul>
+                            </li>
+                        </div>
+                        <div class="d-flex justify-content-between w-100 align-items-center">
+                            <li><a href="javascript:;" onclick="clearSelection()">پاک کردن انتخاب</a></li>
+                            <li><a href="javascript:;" class="closebox-link">بستن</a></li>
+                        </div>
+                    </ul>
                 </div>
-                <div class="form-group">
-                    <!-- <label for="price-range">متراژ</label> -->
-                    <div class="dropdown ">
-                        <button class="btn btn-default dropdown-toggle" type="button" id="price-range" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                            متراژ
-                            <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu  border border-2 border-second rounded-10" aria-labelledby="price-range">
-                            <div class="d-flex justify-content-around w-100" >
-                                <li>
-                                    <h4>حداقل متراژ (متر مربع)</h4>
-                                    <ul>
-                                        <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="min-50m" value="50m"><label for="min-50m">50 متر</label></li>
-                                        <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="min-100m" value="100m"><label for="min-100m">100 متر</label></li>
-                                        <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="min-150m" value="150m"><label for="min-150m">150 متر</label></li>
-                                        <!-- Add more options here -->
-                                    </ul>
-                                </li>
-                                <li>
-                                    <h4>حداکثر متراژ (متر مربع)</h4>
-                                    <ul>
-                                        <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="max-200m" value="200m"><label for="max-200m">200 متر</label></li>
-                                        <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="max-300m" value="300m"><label for="max-300m">300 متر</label></li>
-                                        <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="max-400m" value="400m"><label for="max-400m">400 متر</label></li>
-                                        <!-- Add more options here -->
-                                    </ul>
-                                </li>
-                            </div>
-                            <div class="d-flex justify-content-between w-100 align-items-center">
-                                <li><a class="text-dark" href="javascript:;" onclick="clearSelection()">پاک کردن انتخاب</a></li>
-                                <li><a href="javascript:;" class="closebox-link text-dark">بستن</a></li>
-                            </div>
-                        </ul>
-                    </div>
-                    <label id="price-error" class="text-danger" style="display:none">حداقل متراژ از حداکثر آن بیشتر است</label>
+                <label id="price-error" class="text-danger" style="display:none">حداقل قیمت از حداکثر آن بیشتر
+                    است</label>
+            </div>
+            <div class="form-group">
+                <!-- <label for="price-range">متراژ</label> -->
+                <div class="dropdown ">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="price-range"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        متراژ
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu  border border-2 border-second rounded-10" aria-labelledby="price-range">
+                        <div class="d-flex justify-content-around w-100">
+                            <li>
+                                <h4>حداقل متراژ (متر مربع)</h4>
+                                <ul>
+                                    <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="min-50m"
+                                            value="50m"><label for="min-50m">50 متر</label></li>
+                                    <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="min-100m"
+                                            value="100m"><label for="min-100m">100 متر</label></li>
+                                    <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="min-150m"
+                                            value="150m"><label for="min-150m">150 متر</label></li>
+                                    <!-- Add more options here -->
+                                </ul>
+                            </li>
+                            <li>
+                                <h4>حداکثر متراژ (متر مربع)</h4>
+                                <ul>
+                                    <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="max-200m"
+                                            value="200m"><label for="max-200m">200 متر</label></li>
+                                    <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="max-300m"
+                                            value="300m"><label for="max-300m">300 متر</label></li>
+                                    <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="max-400m"
+                                            value="400m"><label for="max-400m">400 متر</label></li>
+                                    <!-- Add more options here -->
+                                </ul>
+                            </li>
+                        </div>
+                        <div class="d-flex justify-content-between w-100 align-items-center">
+                            <li><a class="text-dark" href="javascript:;" onclick="clearSelection()">پاک کردن انتخاب</a>
+                            </li>
+                            <li><a href="javascript:;" class="closebox-link text-dark">بستن</a></li>
+                        </div>
+                    </ul>
                 </div>
-            
+                <label id="price-error" class="text-danger" style="display:none">حداقل متراژ از حداکثر آن بیشتر
+                    است</label>
+            </div>
+
         </div>
 
         <div class="row row-cols-1 row-cols-lg-3">
@@ -634,6 +661,77 @@
 
         </div>
     </div>
+
+
+
+
+    <!-- money-->
+    <div class="modal fade" id="moneyModal"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content bg-transparent p-0">
+                <!-- <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div> -->
+                <div class="modal-body p-0 ">
+                    <ul class="dropdown-menuList border border-2 border-second rounded-10 bg-white m-auto" aria-labelledby="price-range">
+                        <div class="d-flex justify-content-around w-100" aria-labelledby="price-range">
+                            <li class="border border-1 border-second p-1 rounded-3 ">
+                                <h4>حداقل قیمت (تومان)</h4>
+                                <ul>
+                                    <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="min-100m"
+                                            value="100m"><label for="min-100m">100 میلیون</label></li>
+                                    <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="min-500m"
+                                            value="500m"><label for="min-500m">500 میلیون</label></li>
+                                    <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="min-750m"
+                                            value="750m"><label for="min-750m">750 میلیون</label></li>
+                                    <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="min-100m"
+                                            value="100m"><label for="min-100m">100 میلیون</label></li>
+                                    <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="min-500m"
+                                            value="500m"><label for="min-500m">500 میلیون</label></li>
+                                    <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="min-750m"
+                                            value="750m"><label for="min-750m">750 میلیون</label></li>
+                                    <!-- Add more options here -->
+                                </ul>
+                            </li>
+                            <li class="border border-1 border-second p-1 rounded-3 ">
+                                <h4>حداکثر قیمت (تومان)</h4>
+                                <ul>
+                                    <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="max-2b"
+                                            value="2b"><label for="max-2b">2 میلیارد</label></li>
+                                    <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="max-3b"
+                                            value="3b"><label for="max-3b">3 میلیارد</label></li>
+                                    <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="max-5b"
+                                            value="5b"><label for="max-5b">5 میلیارد</label></li>
+                                    <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="max-2b"
+                                            value="2b"><label for="max-2b">2 میلیارد</label></li>
+                                    <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="max-3b"
+                                            value="3b"><label for="max-3b">3 میلیارد</label></li>
+                                    <li class="d-flex gap-1 align-items-center"><input type="checkbox" id="max-5b"
+                                            value="5b"><label for="max-5b">5 میلیارد</label></li>
+                                    <!-- Add more options here -->
+                                </ul>
+                            </li>
+                        </div>
+                        <div class="d-flex justify-content-between w-100 align-items-center">
+                            <li><a href="javascript:;" onclick="clearSelection()">پاک کردن انتخاب</a></li>
+                            <li><a href="javascript:;" class="closebox-link " data-dismiss="modal">بستن</a></li>
+                        </div>
+                    </ul>
+                </div>
+                <!-- <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div> -->
+            </div>
+        </div>
+    </div>
+    <!-- money-->
+
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -669,8 +767,8 @@
 
         // // Initial display
         // filterProducts();
-        document.querySelectorAll('.dropdown-menu input[type="checkbox"]').forEach(checkbox => {
-            checkbox.addEventListener('change', function() {
+        document.querySelectorAll('.dropdown-menuList input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', function () {
                 const group = this.closest('ul');
                 if (this.checked) {
                     group.querySelectorAll('input[type="checkbox"]').forEach(box => {
@@ -681,7 +779,7 @@
         });
 
         function clearSelection() {
-            document.querySelectorAll('.dropdown-menu input[type="checkbox"]').forEach(box => {
+            document.querySelectorAll('.dropdown-menuList input[type="checkbox"]').forEach(box => {
                 box.checked = false;
             });
         }
