@@ -181,9 +181,71 @@ body {
         margin: 0;
     }
 }
+.opacity-50{
+    opacity: 0.5;
+}
+.bestShop{
+    width: 100%;
+    height: 200px;
+}
+.gallery-slider {
+    width: 100%;
+    /* height: 300px; */
+    margin-left: auto;
+    margin-right: auto;
+}
 
+.gallery-slider .swiper-slide {
+    background-size: cover;
+    background-position: center;
+}
 
+.thumbs-slider {
+    height: 80%;
+    width: 100%;
+}
+
+.thumbs-slider .swiper-slide {
+    width: 25%;
+    /* height: 100px; */
+    opacity: 0.4;
+}
+
+.thumbs-slider .swiper-slide-thumb-active {
+    opacity: 1;
+}
+
+.thumbs-slider .swiper-slide img {
+    height: 100px !important;
+}
+
+.gallery-slider .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+}
+
+.mySwiper .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 @media screen and (max-width:500px) {
+    .thumbs-slider .swiper-slide img {
+        height: 40px !important;
+    }
+    
+    .gallery-slider .swiper-slide img {
+        height: 300px;
+    }
+    .bestShop{
+        width: 100%;
+        height: 150px;
+    }
     .Sanatbutton {
         font-size: 16px;
         padding: 7px 20px;

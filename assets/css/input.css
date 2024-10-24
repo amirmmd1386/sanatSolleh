@@ -1,0 +1,36 @@
+.am-search {
+    position: relative;
+    margin-bottom: 20px;
+    width: 300px;
+  }
+
+  .am-search input[type="search"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+  }
+
+  .am-search label {
+    font-size: 14px;
+    color: #666;
+  }
+
+  .am-search-results {
+    position: absolute;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background: rgb(255, 255, 255);
+    width: 100%;
+    z-index: 10000;
+  }
+
+  .am-search-results li {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .am-search-results li:hover {
+    background-color: #f5f5f5;
+  }

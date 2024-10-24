@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .am-search {
+      position: relative;
+      margin-bottom: 20px;
+      width: 300px;
+    }
+
+    .am-search input[type="search"] {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 100%;
+    }
+
+    .am-search label {
+      font-size: 14px;
+      color: #666;
+    }
+
+    .am-search-results {
+      position: absolute;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      background: rgb(255, 255, 255);
+      width: 100%;
+    }
+
+    .am-search-results li {
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .am-search-results li:hover {
+      background-color: #f5f5f5;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Search input field with custom class -->
+  <div class=" am-search ">
+    <input type="search" id="search-input" class="form-control" placeholder="Search...">
+    <!-- <label for="search-input">Search</label> -->
+    <ul id="search-results" class="list-group am-search-results">
+      <!-- list items will be rendered here -->
+    </ul>
+  </div>
+
+  <!-- Search results list with custom class -->
+
+  <a href="">aa</a>
+  <a href="">aa</a>
+  <a href="">aa</a>
+  <a href="">aa</a>
+  <a href="">aa</a>
+
+  <!-- JavaScript code to enable filtering (remains the same) -->
+ <script type="module" src="assets/js/input.js"></script>
+
+</body>
+
+</html>
